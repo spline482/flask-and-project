@@ -1,8 +1,0 @@
-{
-    "1": {
-        "username": "admin",
-        "password_hash": "scrypt:32768:8:1$2s3M3OdowiNqS9v8$5c2e2761ae3788083b69924def7d66282bce28d65aaa904e0b8a8d91cefcfe1677b570db9f2c164e6148e5145a341f3206b35577bc2c3e67b7c694984b2985f7",
-        "registered_at": "2026-06-15 19:35:18",
-        "last_login": "Никогда"
-    }
-}
