@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Управление категориями</h2>
+<form method="POST">
+    Новая категория: <input type="text" name="name" required>
+    <button type="submit">Добавить</button>
+</form>
+<ul>
+    {% for c in categories %}<li>{{ c.name }}</li>{% endfor %}
+</ul>
+{% endblock %}

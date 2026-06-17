@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Блог</title></head>
+<body>
+    <nav>
+        <a href="/">Главная</a> |
+        {% if current_user.is_authenticated %}
+            <a href="/post/new">Создать пост</a> |
+            <a href="/categories">Категории</a> |
+            <a href="/tags">Теги</a> |
+            <a href="/dump" target="_blank">Дамп БД</a> |
+            <a href="/logout">Выйти ({{ current_user.username }})</a>
+        {% else %}
+            <a href="/login">Войти</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Управление тегами</h2>
+<form method="POST">
+    Новый тег: <input type="text" name="name" required>
+    <button type="submit">Добавить</button>
+</form>
+<ul>
+    {% for t in tags %}<li>{{ t.name }}</li>{% endfor %}
+</ul>
+{% endblock %}

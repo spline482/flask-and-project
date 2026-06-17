@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Фильтры</h2>
+<p>
+    Категории: {% for c in categories %}<a href="/?category={{ c.name }}">{{ c.name }}</a> | {% endfor %}<br>
+    Теги: {% for t in tags %}<a href="/?tag={{ t.name }}">{{ t.name }}</a> | {% endfor %}
+</p><hr>
+
+{% for post in posts %}
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+        <h3>{{ post.title }} {% if post.is_private %}(Приватный){% endif %}</h3>
+        <p><small>
+            Автор: <a href="/?author={{ post.author.username }}">{{ post.author.username }}</a> | 
+            Категория: {{ post.category.name if post.category else 'Без категории' }} |
+            Теги: {% for tag in post.tags %} {{ tag.name }} {% endfor %}
+        </small></p>
+        <p>{{ post.content }}</p>
+        {% if current_user == post.author %}
+            <form action="/post/delete/{{ post.id }}" method="POST">
+                <button type="submit">Удалить</button>
+            </form>
+        {% endif %}
+    </div>
+{% endfor %}
+{% endblock %}

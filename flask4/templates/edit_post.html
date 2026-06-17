@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Новый пост</h2>
+<form method="POST">
+    <p>Название: <input type="text" name="title" required></p>
+    <p>Текст: <textarea name="content" required></textarea></p>
+    <p>Категория: 
+        <select name="category_id">
+            <option value="">Без категории</option>
+            {% for c in categories %}
+                <option value="{{ c.id }}">{{ c.name }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p>Теги (через запятую): <input type="text" name="tags" placeholder="flask, python, code"></p>
+    <p><label><input type="checkbox" name="is_private"> Приватный пост</label></p>
+    <button type="submit">Сохранить</button>
+</form>
+{% endblock %}

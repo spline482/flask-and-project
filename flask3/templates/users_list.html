@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Список пользователей{% endblock %}
+
+{% block content %}
+<h1>Список пользователей</h1>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Имя пользователя</th>
+        <th>Дата регистрации</th>
+        <th>Последний вход</th>
+        <th>Действия</th>
+    </tr>
+    {% for uid, user in users.items() %}
+    <tr>
+        <td>{{ uid }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.registered_at }}</td>
+        <td>{{ user.last_login }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('delete_user', user_id=uid) }}" style="display:inline;">
+                <button type="submit" onclick="return confirm('Вы уверены?');">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<p><a href="{{ url_for('index') }}">На главную</a></p>
+{% endblock %}
